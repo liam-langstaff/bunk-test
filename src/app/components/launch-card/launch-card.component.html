@@ -1,0 +1,26 @@
+<mat-card class="launch-card">
+  <div class="launch-card__left">
+    <mat-card-title-group>
+      <mat-card-subtitle>SpaceX launch details:</mat-card-subtitle>
+      <mat-card-title>{{launchInfo.name}}</mat-card-title>
+      <mat-card-title>({{launchInfo.flight_number}})</mat-card-title>
+    </mat-card-title-group>
+  </div>
+  <div class="launch-card__center">
+    <mat-card-title-group>
+      <mat-card-subtitle>Time until launch:</mat-card-subtitle>
+      <mat-card-title>
+        <countdown [config]="countdownConfig"></countdown>
+      </mat-card-title>
+    </mat-card-title-group>
+    <button class="btn" [routerLink]="['launch-details', launchInfo.id]">View details</button>
+  </div>
+  <div class="launch-card__right">
+    <ng-container *ngIf="launchInfo.links.patch.small; else placeholder">
+      <img class="img img-placeholder" [src]="launchInfo.links.patch.small" >
+    </ng-container>
+    <ng-template #placeholder>
+      <img class="img img-placeholder" [src]="'../assets/SpaceX_Logo_Black.png'" >
+    </ng-template>
+  </div>
+</mat-card>

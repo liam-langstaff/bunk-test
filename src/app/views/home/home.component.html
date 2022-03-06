@@ -1,0 +1,2 @@
+<h1 [style]="{'text-align': 'center'}">Upcoming spaceX launches</h1>
+<app-launch-card *ngFor="let launch of upcomingLaunches; let i = index" [launchInfo]="launch"></app-launch-card>

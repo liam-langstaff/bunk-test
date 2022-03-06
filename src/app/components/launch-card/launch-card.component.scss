@@ -1,0 +1,62 @@
+.mat-card {
+  font-family: 'Space Mono', monospace;
+}
+
+.launch-card {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  padding: 0;
+  border-radius: 9px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+
+  .count-down {
+    font-weight: bold;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  .mat-card-subtitle {
+    margin-bottom: 8px;
+  }
+
+  & > * {
+    padding: 20px 8px 20px 14px;
+  }
+
+  &__left {
+    flex-basis: 255px;
+    background: #1C1C1C;
+    color: #fff;
+    display: flex;
+    .mat-card-subtitle {
+      color: #fff;
+    }
+
+  }
+
+  &__center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__right {
+    display: flex;
+    align-content: center;
+    align-self: center;
+  }
+
+  .img {
+    width: auto;
+    height: auto;
+
+    &.img-placeholder {
+      max-width: 115px;
+    }
+  }
+
+}

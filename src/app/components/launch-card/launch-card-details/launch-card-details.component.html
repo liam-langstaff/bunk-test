@@ -1,0 +1,108 @@
+<h5 class="back" [routerLink]="'/'">< Back</h5>
+<div class="launch-details">
+  <div class="launch-details__heading">
+    <div>
+      <mat-card-subtitle>Flight name:</mat-card-subtitle>
+      <h1>{{launchDetails?.name}}</h1>
+      <mat-card-subtitle>Flight number:</mat-card-subtitle>
+      <h1>{{launchDetails?.flight_number}}</h1>
+      <mat-card-subtitle>Time until launch:</mat-card-subtitle>
+      <h1><countdown [config]="countdownConfig"></countdown></h1>
+
+    </div>
+    <div>
+      <ng-container *ngIf="launchDetails?.links?.patch?.large; else placeholder">
+        <img class="img" [src]="launchDetails?.links?.patch?.large" >
+      </ng-container>
+      <ng-template #placeholder>
+        <img class="img img-placeholder" [src]="'../assets/SpaceX_Logo_Black.png'" >
+      </ng-template>
+      <img [src]="" alt="">
+    </div>
+
+  </div>
+  <div class="launch-details__content">
+    <mat-card-title>Crew members</mat-card-title>
+    <hr>
+    <ng-container *ngIf="crewMembers; else unmanned">
+      <div *ngFor="let crewMember of crewMembers">
+        <div class="crew-member__container">
+          <div class="crew-member__details">
+
+            <div class="detail">
+              <mat-card-subtitle>Name:</mat-card-subtitle>
+              {{crewMember.name}}
+            </div>
+
+            <div class="detail">
+              <mat-card-subtitle>Agency:</mat-card-subtitle>
+              {{crewMember.agency}}
+            </div>
+
+            <div class="detail">
+              <mat-card-subtitle>Wiki link:</mat-card-subtitle>
+              <a href="crewMember?.wikipedia"> {{crewMember.wikipedia}}</a>
+            </div>
+
+            <div class="detail">
+              <mat-card-subtitle>Status:</mat-card-subtitle>
+              {{crewMember.status}}
+            </div>
+
+          </div>
+          <div class="crew-member__image">
+            <img  class="img" [src]="crewMember.image" alt="">
+          </div>
+        </div>
+
+        <hr>
+      </div>
+    </ng-container>
+    <ng-template #unmanned>
+      <h3>This flight is unmanned</h3>
+      <hr>
+    </ng-template>
+  </div>
+  <div class="launch-details__rocket-content">
+    <mat-card-title>Rocket details</mat-card-title>
+    <mat-card-subtitle class="rocket-description" *ngIf="rocket?.description">{{rocket.description}}</mat-card-subtitle>
+    <hr>
+    <div class="detail">
+      <mat-card-subtitle>Name:</mat-card-subtitle>
+      {{rocket.name}}
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Country:</mat-card-subtitle>
+      {{rocket.country}}
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Company:</mat-card-subtitle>
+      {{rocket.company}}
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Boosters:</mat-card-subtitle>
+      {{rocket.boosters}}
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Diameter:</mat-card-subtitle>
+      {{rocket.diameter.meters}} Meters, {{rocket.diameter.feet}} Feet
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Height:</mat-card-subtitle>
+      {{rocket.height.meters}} Meters, {{rocket.height.feet}} Feet
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Mass:</mat-card-subtitle>
+      {{rocket.mass.kg}} kg, {{rocket.mass.lb}} lb
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>First flight:</mat-card-subtitle>
+      {{rocket.first_flight}}
+    </div>
+    <div class="detail">
+      <mat-card-subtitle>Success rate:</mat-card-subtitle>
+      {{rocket.success_rate_pct}}%
+    </div>
+  </div>
+
+</div>
